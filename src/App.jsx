@@ -13,13 +13,13 @@
 
 // export default App;
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import SalesOrder from "./pages/SalesOrder";
 
 function App() {
   return (
-    <BrowserRouter>
+   
       <Routes>
         {/* Home page */}
         <Route path="/" element={<Home />} />
@@ -30,7 +30,7 @@ function App() {
         {/* Edit sales order */}
         <Route path="/sales-order/:id" element={<SalesOrder />} />
       </Routes>
-    </BrowserRouter>
+   
   );
 }
 

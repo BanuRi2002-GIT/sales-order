@@ -38,7 +38,8 @@
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 // import { fetchClients, fetchClientById } from "../../services/clientsService";
-import { fetchClients, fetchClientById } from "../Services/clientsService";
+import { fetchClients, fetchClientById } from "../../Services/clientsService";
+
 export const loadClients = createAsyncThunk("clients/loadClients", async () => {
   return await fetchClients();
 });

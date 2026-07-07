@@ -26,7 +26,7 @@
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 // import { fetchItems } from "../../services/itemsService";
-import { fetchItems } from "../Services/itemsService";
+import { fetchItems } from "../../Services/itemsService";
 
 export const loadItems = createAsyncThunk("items/loadItems", async () => {
   return await fetchItems();
