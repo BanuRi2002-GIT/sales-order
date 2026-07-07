@@ -112,30 +112,104 @@
 //   setTimeout(() => dispatch(setSaveStatus("idle")), 800);
 // };
 
-import { createSlice } from "@reduxjs/toolkit";
+// 
 
-const initialState = {
-  orders: [],
-  currentOrder: null,
-  loading: false,
-  error: null,
-};
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+// import {
+//   fetchOrders,
+//   fetchOrderById,
+//   createOrder,
+//   updateOrder,
+// } from "../../services/ordersService";
+import {
+  fetchOrders,
+  fetchOrderById,
+  createOrder,
+  updateOrder,
+} from "../Services/orderService";
+
+
+export const loadOrders = createAsyncThunk("orders/loadOrders", async () => {
+  return await fetchOrders();
+});
+
+export const loadOrderById = createAsyncThunk("orders/loadOrderById", async (id) => {
+  return await fetchOrderById(id);
+});
+
+export const saveNewOrder = createAsyncThunk("orders/saveNewOrder", async (order) => {
+  return await createOrder(order);
+});
+
+export const saveExistingOrder = createAsyncThunk(
+  "orders/saveExistingOrder",
+  async ({ id, order }) => {
+    return await updateOrder(id, order);
+  }
+);
 
 const ordersSlice = createSlice({
   name: "orders",
-  initialState,
+  initialState: {
+    list: [],
+    currentOrder: null,
+    status: "idle",
+    saveStatus: "idle",
+    error: null,
+  },
   reducers: {
     clearCurrentOrder: (state) => {
       state.currentOrder = null;
+      state.saveStatus = "idle";
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(loadOrders.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(loadOrders.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.list = action.payload;
+      })
+      .addCase(loadOrders.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(loadOrderById.pending, (state) => {
+        state.status = "loading";
+        state.currentOrder = null;
+      })
+      .addCase(loadOrderById.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.currentOrder = action.payload;
+      })
+      .addCase(saveNewOrder.pending, (state) => {
+        state.saveStatus = "saving";
+      })
+      .addCase(saveNewOrder.fulfilled, (state, action) => {
+        state.saveStatus = "succeeded";
+        state.list.push(action.payload);
+      })
+      .addCase(saveNewOrder.rejected, (state, action) => {
+        state.saveStatus = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(saveExistingOrder.pending, (state) => {
+        state.saveStatus = "saving";
+      })
+      .addCase(saveExistingOrder.fulfilled, (state, action) => {
+        state.saveStatus = "succeeded";
+        state.list = state.list.map((o) =>
+          o.id === action.payload.id ? action.payload : o
+        );
+      })
+      .addCase(saveExistingOrder.rejected, (state, action) => {
+        state.saveStatus = "failed";
+        state.error = action.error.message;
+      });
   },
 });
 
 export const { clearCurrentOrder } = ordersSlice.actions;
-
-// Temporary placeholder actions
-export const loadOrderById = (id) => async () => {};
-export const saveNewOrder = (data) => async () => {};
-export const saveExistingOrder = (id, data) => async () => {};
-
 export default ordersSlice.reducer;
