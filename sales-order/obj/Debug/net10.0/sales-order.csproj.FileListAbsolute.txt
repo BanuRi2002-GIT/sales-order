@@ -32,3 +32,15 @@ C:\Users\ASUS\Desktop\sales-order\sales-order\obj\Debug\net10.0\refint\sales-ord
 C:\Users\ASUS\Desktop\sales-order\sales-order\obj\Debug\net10.0\sales-order.pdb
 C:\Users\ASUS\Desktop\sales-order\sales-order\obj\Debug\net10.0\sales-order.genruntimeconfig.cache
 C:\Users\ASUS\Desktop\sales-order\sales-order\obj\Debug\net10.0\ref\sales-order.dll
+C:\Users\ASUS\Desktop\sales-order\sales-order\bin\Debug\net10.0\AutoMapper.dll
+C:\Users\ASUS\Desktop\sales-order\sales-order\bin\Debug\net10.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\ASUS\Desktop\sales-order\sales-order\bin\Debug\net10.0\DnsClient.dll
+C:\Users\ASUS\Desktop\sales-order\sales-order\bin\Debug\net10.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\ASUS\Desktop\sales-order\sales-order\bin\Debug\net10.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\ASUS\Desktop\sales-order\sales-order\bin\Debug\net10.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\ASUS\Desktop\sales-order\sales-order\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\ASUS\Desktop\sales-order\sales-order\bin\Debug\net10.0\MongoDB.Bson.dll
+C:\Users\ASUS\Desktop\sales-order\sales-order\bin\Debug\net10.0\MongoDB.Driver.dll
+C:\Users\ASUS\Desktop\sales-order\sales-order\bin\Debug\net10.0\SharpCompress.dll
+C:\Users\ASUS\Desktop\sales-order\sales-order\bin\Debug\net10.0\Snappier.dll
+C:\Users\ASUS\Desktop\sales-order\sales-order\bin\Debug\net10.0\ZstdSharp.dll
